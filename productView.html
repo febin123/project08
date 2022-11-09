@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeerBiceps</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="style.css">
+
+    <script src="jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+    
+<!-- header section starts  -->
+
+<header>
+
+    <a href="#" class="logo"><i class="fas fa-dumbbell"></i>BeerBiceps</a>
+
+    <div id="menu-bar" class="fas fa-bars"></div>
+ 
+    <nav class="navbar">
+        <a href="#home">home</a>
+        <a href="#sales">Sales</a>
+        <a href="#" class="search-mob"> <input type="search" class="search-data" placeholder="Search" required>
+            <button type="submit" class="fas fa-search"></button></a>
+    </nav>
+   
+    
+        <form action="#">
+         <input type="search" id="search-data" class="search-data" placeholder="Search" required>
+            <button type="submit" class="fas fa-search"></button>
+             
+        </form>
+    </a>
+</header>
+
+<!-- header section ends -->
+
+
+<!-- sales section starts  -->
+
+<section class="sales" id="sales">
+
+    <h1 class="heading"><span>Sales</span></h1>
+
+    <div id="box-container" class="box-container">
+
+        <!-- <div class= "box">
+            <span class="price"> -20% </span>
+            <img src="images/popular1.png" alt="">
+            <h3>tasty burger</h3>
+            <div class="stars">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+                
+            </div>
+            <a href="#" class="btn" onclick="show1()">order now</a>
+        </div>
+        <div class="box">
+            <span class="price"> -15% </span>
+            <img src="images/popular2.png" alt="">
+            <h3>tasty cakes</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <a href="#" class="btn" onclick="show2()">order now</a>
+        </div>
+        <div class="box">
+            <span class="price"> -5% </span>
+            <img src="images/popular3.png" alt="">
+            <h3>tasty sweets</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <a href="#" class="btn" onclick="show3()">order now</a>
+        </div>
+        <div class="box">
+            <span class="price"> -25% </span>
+            <img src="images/sale1.png" alt="">
+            <h3>tasty cupcakes</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+                <i class="far fa-star"></i>
+            </div>
+            <a href="#" class="btn" onclick="show4()">order now</a>
+        </div>
+        <div class="box">
+            <span class="price"> -10% </span>
+            <img src="images/sale2.png" alt="">
+            <h3>cold drinks</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+                
+            </div>
+            <a href="#" class="btn" onclick="show5()">order now</a>
+        </div>
+        <div class="box">
+            <span class="price"> -10% </span>
+            <img src="images/sale3.jpeg" alt="">
+            <h3>cold ice-cream</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <a href="#" class="btn" onclick="show6()">order now</a>
+        </div>  -->
+
+    </div>
+
+</section>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(()=>{
+                var search = document.location.search;
+                $.getJSON('view.json', (data)=>{
+                    data.forEach((course)=>{
+                        if(search.indexOf(course.id) != -1){
+                        
+
+
+                            var product = '<div class="box">'+
+                    '<span class="price">'+ course.price + '</span>'+
+                    '<img src="' + course.img + '">'+
+                    '<h3>' + course.name + '</h3>'+
+                     
+                     ' <a href="./productView.html?id='+course.id+'" class="btn">'+course.buy+ '</a>'
+          
+                '</div>';
+                $('.box-container').append(product);
+
+
+
+
+
+                            // $('body').append('<h1>'+course.title+'</h1>')
+                        }
+                    });
+                });
+
+            })
+        </script>
+<!-- custom js file link  -->
+<script src="script.js"></script>
+
+
+</body>
+</html>
